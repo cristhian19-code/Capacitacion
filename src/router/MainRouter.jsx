@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { EditarEmpresaExterna } from '../pages/EditarEmpresaExterna'
+import { IngresarCandidatoExterno } from '../pages/IngresarCandidatoExterno'
 import { IngresarCandidatoInterno } from '../pages/IngresarCandidatoInterno'
 import { Login } from '../pages/Login'
 import { NuevoCandidato } from '../pages/NuevoCandidato'
@@ -15,7 +17,9 @@ export const MainRouter = () => {
                 <Route path='/revision_perfil' element={<RevisionPerfil />} />
                 <Route path='/publicacion' element={<Publicacion />} />
                 <Route path='/ingresar_interno' element={<IngresarCandidatoInterno />} />
+                <Route path='/ingresar_externo' element={<IngresarCandidatoExterno />} />
                 <Route path='/nuevo_candidato' element={<NuevoCandidato />} />
+                <Route path='/editar_empresa_externa' element={<EditarEmpresaExterna />} />
             </Routes>
         </BrowserRouter>
     )

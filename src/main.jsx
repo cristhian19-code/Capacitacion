@@ -9,7 +9,6 @@ import "primeflex/primeflex.min.css"
 import "./styles/global.scss"
 import { MainRouter } from './router/MainRouter';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <MainRouter />
