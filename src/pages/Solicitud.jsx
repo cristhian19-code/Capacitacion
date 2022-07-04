@@ -20,8 +20,8 @@ export const Solicitud = () => {
     ]
 
 
-    const goToRevisionPerfil = () => {
-        navigate('/revision_perfil')
+    const goToMenu = () => {
+        navigate('/')
     }
 
     return (
@@ -144,7 +144,7 @@ export const Solicitud = () => {
                 <div className='flex gap-4 justify-content-center mt-6 mb-3'>
                     <Button className='p-button-primary p-button-sm' icon="pi pi-save" label="Guardar" />
                     <Button className='p-button-primary p-button-sm' icon="pi pi-pencil" label="Editar" />
-                    <Button className='p-button-primary p-button-sm' icon="pi pi-arrow-right" label="Siguiente" onClick={goToRevisionPerfil} />
+                    <Button className='p-button-primary p-button-sm' icon="pi pi-arrow-right" label="Siguiente" onClick={goToMenu} />
                 </div>
             </form>
         </div>

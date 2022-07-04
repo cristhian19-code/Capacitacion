@@ -45,11 +45,6 @@ export const IngresarCandidatoExterno = () => {
                         <td>Cuatro años de experiencia en sistemas de contabilidad</td>
                     </tr>
                     <br />
-                    <tr>
-                        <td>Ubicacion:</td>
-                        <td></td>
-                    </tr>
-                    <br />
                 </table>
 
                 <h4>Candidatos </h4>

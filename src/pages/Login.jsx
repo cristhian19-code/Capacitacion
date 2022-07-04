@@ -1,12 +1,15 @@
 import logo from '../assets/logo.png'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
+import { useNavigate } from 'react-router-dom'
 
 export const Login = () => {
+    const navigate = useNavigate();
 
     const obSubmit = (e) => {
         e.preventDefault();
-        alert('Enviando mensajes')
+
+        navigate('/')
     }
 
     return (
