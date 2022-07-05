@@ -1,3 +1,5 @@
+import { Button } from 'primereact/button'
+import { Calendar } from 'primereact/calendar'
 import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
 import { InputText } from 'primereact/inputtext'
@@ -18,7 +20,11 @@ export const JefaturaReclutamiento = () => {
                 <Column field="celular" header="Telefono/Celular"></Column>
                 <Column field="fec_cierre" header="Fecha Cierre"></Column>
             </DataTable>
-
+            <div className="flex mt-2" style={{ gap: 10 }}>
+                <Button icon="pi pi-plus" />
+                <Button icon="pi pi-pencil" />
+                <Button icon="pi pi-times" />
+            </div>
             <h4 className='mt-6'>Informacion de la Publicacion</h4>
             <table>
                 <colgroup>
@@ -28,28 +34,37 @@ export const JefaturaReclutamiento = () => {
                 <br />
                 <tr>
                     <td>
-                        <label htmlFor="nom_cargo" className='mr-2'>Nombre del Cargo</label>
+                        <label htmlFor="per_objetivo" className='mr-2'>Personal Objetivo</label>
                     </td>
                     <td>
-                        <InputText id='nom_cargo' className='p-inputtext-sm w-full' />
-                    </td>
-                </tr>
-                <br />
-                <tr>
-                    <td>
-                        <label htmlFor="des_trabajo" className='mr-2'>Descripcion del Trabajo</label>
-                    </td>
-                    <td>
-                        <InputText id='des_trabajo' className='p-inputtext-sm w-full' />
+                        <InputText id='per_objetivo' className='p-inputtext-sm w-full' />
                     </td>
                 </tr>
                 <br />
                 <tr>
                     <td>
-                        <label htmlFor="per_cargo" className='mr-2'>Perfil del Cargo</label>
+                        <label htmlFor="fec_cierre" className='mr-2'>Fecha de cierre</label>
                     </td>
                     <td>
-                        <InputText id='per_cargo' className='p-inputtext-sm w-full' />
+                        <Calendar id='fec_cierre' className='p-inputtext-sm w-6' showIcon />
+                    </td>
+                </tr>
+                <br />
+                <tr>
+                    <td>
+                        <label htmlFor="nom_cargo" className='mr-2'>Nombre del cargo</label>
+                    </td>
+                    <td>
+                        <InputText disabled id='nom_cargo' className='p-inputtext-sm w-full' />
+                    </td>
+                </tr>
+                <br />
+                <tr>
+                    <td>
+                        <label htmlFor="des_cargo" className='mr-2'>Descripcion del Cargo</label>
+                    </td>
+                    <td>
+                        <InputText disabled id='des_cargo' className='p-inputtext-sm w-full' />
                     </td>
                 </tr>
                 <br />
@@ -58,19 +73,9 @@ export const JefaturaReclutamiento = () => {
                         <label htmlFor="requisitos" className='mr-2'>Requisitos</label>
                     </td>
                     <td>
-                        <InputText id='requisitos' className='p-inputtext-sm w-full' />
+                        <InputText disabled id='requisitos' className='p-inputtext-sm w-full' />
                     </td>
                 </tr>
-                <br />
-                <tr>
-                    <td>
-                        <label htmlFor="ubicacion" className='mr-2'>Ubicacion</label>
-                    </td>
-                    <td>
-                        <InputText id='ubicacion' className='p-inputtext-sm w-full' />
-                    </td>
-                </tr>
-                <br />
             </table>
         </div>
     )

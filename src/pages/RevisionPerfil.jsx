@@ -2,10 +2,17 @@ import { Button } from "primereact/button";
 import { AutoComplete } from 'primereact/autocomplete'
 import { Calendar } from 'primereact/calendar'
 
+import { useNavigate } from 'react-router-dom'
+
 export const RevisionPerfil = () => {
+    const navigate = useNavigate();
 
     const onSaveSolicitud = (e) => {
         e.preventDefault();
+    }
+
+    const goToPublicacion = () => {
+        navigate('/publicacion')
     }
 
     return (
@@ -41,8 +48,6 @@ export const RevisionPerfil = () => {
                         </td>
                     </tr>
                     <br />
-                    <br />
-                    <br />
                     <tr>
                         <td>Tipo Cargo:</td>
                         <td style={{ fontSize: 12 }}>Supervision</td>
@@ -55,7 +60,7 @@ export const RevisionPerfil = () => {
                     <br />
 
                     <tr>
-                        <td colSpan={1}>Nombre de Cargo</td>
+                        <td colSpan={1}>Nombre de Cargo:</td>
                         <td colSpan={4} style={{ fontSize: 12 }}>Jefe de Almacen</td>
                     </tr>
 
@@ -63,20 +68,20 @@ export const RevisionPerfil = () => {
                     <br />
 
                     <tr>
-                        <td colSpan={1}>Descripcion del Cargo</td>
+                        <td colSpan={1}>Descripcion del Cargo:</td>
                         <td colSpan={4} style={{ fontSize: 12 }}>Mantener bajo control los eventos en donde se este solicitando</td>
                     </tr>
                     <br />
 
                     <tr>
-                        <td colSpan={1}>Responsabilidad</td>
+                        <td colSpan={1}>Responsabilidad:</td>
                         <td colSpan={4} style={{ fontSize: 12 }}>Supervisar y controlar los trabajos en donde se asigne</td>
                     </tr>
 
                     <br />
 
                     <tr>
-                        <td colSpan={1}>Experiencia</td>
+                        <td colSpan={1}>Experiencia:</td>
                         <td colSpan={4} style={{ fontSize: 12 }}>Contar con mas de 1 año en puestos similares</td>
                     </tr>
 
@@ -127,7 +132,18 @@ export const RevisionPerfil = () => {
                         </td>
                     </tr>
                     <br />
-
+                    <tr>
+                        <td>
+                            Fecha de Revision
+                        </td>
+                        <td>
+                            <Calendar />
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <br />
                     <tr>
                         <td>
                             Hora de Revision
@@ -145,7 +161,7 @@ export const RevisionPerfil = () => {
                 <div className='flex gap-4 justify-content-center mt-6 mb-3'>
                     <Button className='p-button-primary p-button-sm' icon="pi pi-save" label="Guardar" />
                     <Button className='p-button-primary p-button-sm' icon="pi pi-pencil" label="Editar" />
-                    <Button className='p-button-primary p-button-sm' icon="pi pi-arrow-right" label="Siguiente" />
+                    <Button className='p-button-primary p-button-sm' icon="pi pi-arrow-right" label="Siguiente" onClick={goToPublicacion} />
                 </div>
             </form>
         </div>

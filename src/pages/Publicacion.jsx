@@ -40,7 +40,7 @@ export const Publicacion = () => {
         <div className='px-3 flex flex-column justify-content-center align-items-center'>
             <h2 className='text-white mt-7'>Tipo de Reclutamiento</h2>
 
-            <form className='mt-3 bg-white text-black p-5 border-round mb-5' style={{ width: 750 }}>
+            <div className='mt-3 bg-white text-black p-5 border-round mb-5' style={{ width: 750 }}>
                 <div>
                     <div className="field-checkbox">
                         <Checkbox inputId="interno" name="interno" onChange={onSelectReclutamiento} checked={reclutamiento.name.indexOf('externo') == -1} />
@@ -48,7 +48,7 @@ export const Publicacion = () => {
                     </div>
                     <div className="field-checkbox">
                         <Checkbox inputId="externo" name="externo" onChange={onSelectReclutamiento} checked={reclutamiento.name.indexOf('interno') == -1} />
-                        <label htmlFor="externo">Reclutamiento Enterno</label>
+                        <label htmlFor="externo">Reclutamiento Externo</label>
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@ export const Publicacion = () => {
                             </div>
                             <div className="field-checkbox">
                                 <Checkbox inputId="empresa" name="empresa" onChange={onSelectTipo} checked={reclutamiento.type.indexOf('jefatura') == -1} />
-                                <label htmlFor="empresa">Empresa exterma</label>
+                                <label htmlFor="empresa">Empresa externa</label>
                             </div>
                         </div>
                     )
@@ -75,7 +75,7 @@ export const Publicacion = () => {
                     <Button className='p-button-primary p-button-sm' icon="pi pi-pencil" label="Editar" />
                     <Button onClick={() => goToAdd(reclutamiento.name)} className='p-button-primary p-button-sm' icon="pi pi-arrow-right" label="Siguiente" />
                 </div>
-            </form>
+            </div>
         </div>
     )
 }

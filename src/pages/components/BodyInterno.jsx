@@ -33,7 +33,7 @@ export const BodyInterno = () => {
                         <label htmlFor="fec_cierre" className='mr-2'>Fecha de cierre</label>
                     </td>
                     <td>
-                        <Calendar id='fec_cierre' className='p-inputtext-sm w-6' />
+                        <Calendar id='fec_cierre' className='p-inputtext-sm w-6' showIcon />
                     </td>
                 </tr>
                 <br />
@@ -42,7 +42,7 @@ export const BodyInterno = () => {
                         <label htmlFor="nom_cargo" className='mr-2'>Nombre del cargo</label>
                     </td>
                     <td>
-                        <InputText id='nom_cargo' className='p-inputtext-sm w-full' />
+                        <InputText disabled id='nom_cargo' className='p-inputtext-sm w-full' />
                     </td>
                 </tr>
                 <br />
@@ -51,7 +51,7 @@ export const BodyInterno = () => {
                         <label htmlFor="des_cargo" className='mr-2'>Descripcion del Cargo</label>
                     </td>
                     <td>
-                        <InputText id='des_cargo' className='p-inputtext-sm w-full' />
+                        <InputText disabled id='des_cargo' className='p-inputtext-sm w-full' />
                     </td>
                 </tr>
                 <br />
@@ -60,16 +60,7 @@ export const BodyInterno = () => {
                         <label htmlFor="requisitos" className='mr-2'>Requisitos</label>
                     </td>
                     <td>
-                        <InputText id='requisitos' className='p-inputtext-sm w-full' />
-                    </td>
-                </tr>
-                <br />
-                <tr>
-                    <td>
-                        <label htmlFor="ubicacion" className='mr-2'>Ubicacion</label>
-                    </td>
-                    <td>
-                        <InputText id='ubicacion' className='p-inputtext-sm w-full' />
+                        <InputText disabled id='requisitos' className='p-inputtext-sm w-full' />
                     </td>
                 </tr>
             </table>
