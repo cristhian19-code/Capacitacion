@@ -9,8 +9,13 @@ import "primeflex/primeflex.min.css"
 import "./styles/global.scss"
 import { MainRouter } from './router/MainRouter';
 
+import { store } from './store/index'
+import { Provider } from 'react-redux';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <MainRouter />
+    <Provider store={store}>
+      <MainRouter />
+    </Provider>
   </React.StrictMode>
 )

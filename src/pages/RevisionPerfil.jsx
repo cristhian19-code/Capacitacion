@@ -85,16 +85,6 @@ export const RevisionPerfil = () => {
                         <td colSpan={4} style={{ fontSize: 12 }}>Contar con mas de 1 año en puestos similares</td>
                     </tr>
 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td className="flex justify-content-end">
-                            <Button className="p-button-sm p-button-success" icon="pi pi-pencil" label="Editar Perfil" />
-                        </td>
-                    </tr>
-
                     <br />
                     <br />
 

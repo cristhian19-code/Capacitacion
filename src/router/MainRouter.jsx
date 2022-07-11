@@ -1,30 +1,40 @@
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { EditarEmpresaExterna } from '../pages/EditarEmpresaExterna'
-import { IngresarCandidatoExterno } from '../pages/IngresarCandidatoExterno'
-import { IngresarCandidatoInterno } from '../pages/IngresarCandidatoInterno'
 import { Login } from '../pages/Login'
-import { Menu } from '../pages/Menu'
-import { NuevoCandidato } from '../pages/NuevoCandidato'
-import { Publicacion } from '../pages/Publicacion'
-import { RevisionPerfil } from '../pages/RevisionPerfil'
-import { Solicitud } from '../pages/Solicitud'
+
+import { PrivateRoute } from './PrivateRouter'
+import { PublicRoute } from './PublicRouter'
+
+import { login } from '../store/actions/auth'
 
 export const MainRouter = () => {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        dispatch(login(user))
+        setLoading(false);
+    }, [])
+
+    if (loading) {
+        return <p>Loading ...</p>
+    }
+
     return (
+
         <BrowserRouter>
             <Routes>
-                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={
+                    <PublicRoute>
+                        <Login />
+                    </PublicRoute>
+                } />
 
-                
-                <Route path='/solicitud' element={<Solicitud />} />
-                <Route path='/revision_perfil' element={<RevisionPerfil />} />
-                <Route path='/publicacion' element={<Publicacion />} />
-                <Route path='/ingresar_interno' element={<IngresarCandidatoInterno />} />
-                <Route path='/ingresar_externo' element={<IngresarCandidatoExterno />} />
-                <Route path='/nuevo_candidato' element={<NuevoCandidato />} />
-                <Route path='/editar_empresa_externa' element={<EditarEmpresaExterna />} />
-                
-                <Route path='/' element={<Menu/>} />
+                <Route path='/*' element={
+                    <PrivateRoute />
+                } />
             </Routes>
         </BrowserRouter>
     )

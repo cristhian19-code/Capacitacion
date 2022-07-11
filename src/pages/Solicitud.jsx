@@ -1,45 +1,96 @@
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+
 import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
-import { AutoComplete } from 'primereact/autocomplete';
+import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button'
+import { AutoComplete } from 'primereact/autocomplete'
 
-import { useNavigate } from 'react-router-dom'
+import { startGetConocimiento, startGetTiposCargo } from '../store/actions/items';
+
+import { useDispatch, useSelector } from 'react-redux'
+import { useInput } from '../hooks/useInput';
+
+
+const initialState = {
+    fec_solicitud: '',
+    solicitante: '',
+    id_cargo: '',
+    area: '',
+    codigo: '',
+    descripcion_trabajo: '',
+    responsabilidad: '',
+    conocimientos: [],
+    experiencia: '',
+    num_vacantes: '',
+    comentario: ''
+}
 
 export const Solicitud = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const { onChange, value } = useInput(initialState)
+
+
+    const { conocimientos, tipos_cargo } = useSelector(state => state.items);
+
+    const [filterCargos, setFilterCargos] = useState(null)
+
+    const [conocimiento,] = useState(null)
+
+    useEffect(() => {
+        dispatch(startGetConocimiento());
+        dispatch(startGetTiposCargo());
+    }, [])
+
 
     const onSaveSolicitud = (e) => {
         e.preventDefault();
     }
-
-    const listTipoCargo = [
-        'GERENTE GENERAL',
-        'ASISTENTE DE GERENCIA GENERAL',
-        'AUXILIAR DE MESA DE PARTES'
-    ]
 
 
     const goToMenu = () => {
         navigate('/')
     }
 
+    const onSelectConocimiento = (e) => {
+        setConocimiento(e.value)
+    }
+
+    const onSearchTipoCargo = (e) => {
+        const _cargos = tipos_cargo.filter(tipo_cargo => tipo_cargo.nombre_cargo.toLowerCase().includes(e.query.toLowerCase()))
+        const _cargos_filtered = _cargos.map(cargo => ({
+            label: cargo.nombre_cargo,
+            value: cargo.id_cargo
+        }))
+        setFilterCargos(_cargos_filtered)
+    }
+
     return (
         <div className="px-3 flex flex-column justify-content-center align-items-center">
             <h1 className='text-white mt-7'>Solicitud de Personal</h1>
-
             <form className='mt-3 bg-white text-black p-5 border-round mb-5' onSubmit={onSaveSolicitud} style={{ width: 750 }}>
+
+                <colgroup>
+                    <col style={{ width: '20%' }} />
+                    <col style={{ width: '20%' }} />
+                    <col style={{ width: '20%' }} />
+                    <col style={{ width: '20%' }} />
+                </colgroup>
                 <table>
                     <tr>
                         <td>
                             <label htmlFor="fec_solicitud" className='mr-2'>Fecha Solicitud:</label>
                         </td>
                         <td>
-                            <Calendar id='fec_solicitud' className='p-inputtext-sm' />
+                            <Calendar name="fec_solicitud" onChange={onChange} id='fec_solicitud' className='p-inputtext-sm' />
                         </td>
                         <td style={{ width: 40 }}></td>
                         <td>
-                            <label htmlFor="solicitante" className='mr-2'>Solicitante:</label>
+                            <label htmlFor="solicitante" className='mr-2' disabled  >Solicitante:</label>
                         </td>
                         <td>
                             <InputText id='solicitante' className='p-inputtext-sm' />
@@ -63,7 +114,7 @@ export const Solicitud = () => {
                             <label htmlFor="nom_cargo" className='mr-2'>Tipo de Cargo:</label>
                         </td>
                         <td>
-                            <AutoComplete id='nom_cargo' className='p-inputtext-sm' />
+                            <AutoComplete field="label" suggestions={filterCargos} completeMethod={onSearchTipoCargo} />
                         </td>
                         <td></td>
                         <td>
@@ -94,7 +145,7 @@ export const Solicitud = () => {
                             Responsabilidades:
                         </td>
                         <td colSpan={3} style={{ fontSize: 12 }}>
-                            <InputText className="p-inputtext-sm" />
+                            <InputText onChange={onChange} className="p-inputtext-sm" />
                         </td>
                     </tr>
 
@@ -105,7 +156,7 @@ export const Solicitud = () => {
                             Conocimiento:
                         </td>
                         <td colSpan={3} style={{ fontSize: 12 }}>
-                            <InputText className="p-inputtext-sm" />
+                            <Dropdown value={conocimiento} options={conocimientos} onChange={onSelectConocimiento} />
                         </td>
                     </tr>
                     <br />
