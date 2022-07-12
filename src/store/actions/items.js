@@ -10,7 +10,6 @@ export const startGetConocimiento = () => {
             value: conocimiento.id_conocimiento,
         }));
 
-
         dispatch(getConocimiento(_conocimientos))
     }
 }

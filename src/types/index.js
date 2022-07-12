@@ -4,4 +4,6 @@ export const types = {
 
     getTipoCargo: '[items] getTipoCargo',
     getConocimiento: '[items] getConocimiento',
+
+    sendRequerimiento: '[requerimiento] sendRequerimiento',
 }
